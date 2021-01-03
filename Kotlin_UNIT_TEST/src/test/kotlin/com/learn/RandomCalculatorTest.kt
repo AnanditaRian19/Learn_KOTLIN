@@ -1,23 +1,20 @@
 package com.learn
 
-import com.learn.resolver.RandomParameterResolver
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
-import org.junit.jupiter.api.extension.Extensions
 import java.util.*
 
 /**
  * @author Rizki Rian Anandita
  */
-@Extensions(
-    value = [
-        ExtendWith((RandomParameterResolver::class))
-    ]
-)
-class RandomCalculatorTest {
+//@Extensions(
+//    value = [
+//        ExtendWith((RandomParameterResolver::class))
+//    ]
+//)
+class RandomCalculatorTest : ParentCalculatorTest() {
 
-    private val calculator = Calculator()
+//    private val calculator = Calculator()
 
     @Test
     fun testRandom(random: Random) {
