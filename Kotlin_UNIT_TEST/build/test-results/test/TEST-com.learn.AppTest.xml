@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.learn.AppTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-02T16:04:52" hostname="DESKTOP-30LQ2J0" time="0.033">
-  <properties/>
-  <testcase name="testAppHasAGreeting()" classname="com.learn.AppTest" time="0.033"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
