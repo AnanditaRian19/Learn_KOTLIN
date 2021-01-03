@@ -2,6 +2,7 @@ package com.learn.service
 
 import com.learn.model.Person
 import com.learn.repository.PersonRepository
+import java.util.*
 
 /**
  * @author Rizki Rian Anandita
@@ -19,5 +20,18 @@ class PersonService(val personRepository: PersonRepository) {
         } else {
             throw Exception("Person not found")
         }
+    }
+
+    fun register(name: String): Person {
+        if (name.isBlank()) {
+            throw IllegalArgumentException("Person name is blank")
+        }
+
+        val id = UUID.randomUUID().toString()
+        val person = Person(id, name)
+
+//        personRepository.insert(person)
+
+        return person
     }
 }
