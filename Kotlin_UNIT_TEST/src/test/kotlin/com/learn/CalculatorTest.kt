@@ -3,6 +3,7 @@ package com.learn
 import com.learn.generator.SimpleDisplayNameGenerator
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assumptions.assumeTrue
 import org.opentest4j.TestAbortedException
 
 /**
@@ -88,6 +89,14 @@ class CalculatorTest {
 //            throw java.lang.IllegalArgumentException() // Maka akan di anggap error
         }
         println("Test Not Aborted")
+    }
+
+    // assumeTrue = Value harus sama dengan Environment Variable
+    // assumeFalse = Value beda/salah dengan Environment Variable
+    @Test
+    fun testAssumptions() {
+        assumeTrue("DEV" == System.getenv()["PROFILE"])
+        println("Test Not Aborted because Dev Profile")
     }
 
 }
