@@ -29,6 +29,12 @@ tasks.named<Test>("test") {
     }
 }
 
+tasks.register("integration-test", Test::class) {
+    useJUnitPlatform {
+        includeTags("integration-test")
+    }
+}
+
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).all {
     kotlinOptions {
         jvmTarget = "1.8"
