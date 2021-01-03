@@ -2,6 +2,9 @@ package com.learn
 
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
+import org.junit.jupiter.params.provider.ValueSource
 import java.util.*
 
 /**
@@ -44,5 +47,30 @@ class RandomCalculatorTest : ParentCalculatorTest() {
         val result = calculator.add(first, second)
 
         assertEquals(first + second, result)
+    }
+
+    @DisplayName("Test Calculator with Parameter")
+    @ParameterizedTest(
+        name = "{displayName} with data {0}"
+    )
+    @ValueSource(ints = [1, 2, 3, 4, 5])
+    fun testWithParameter(value: Int) {
+        val result = value + value
+        assertEquals(result, calculator.add(value, value))
+    }
+
+    companion object {
+        @JvmStatic
+        fun parameterSource(): List<Int> {
+            return listOf(1, 2, 3, 4, 5)
+        }
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = ["parameterSource"])
+    fun testWithMethodSource(value: Int) {
+        val result = value + value
+        assertEquals(result, calculator.add(value, value))
+        println(result)
     }
 }
