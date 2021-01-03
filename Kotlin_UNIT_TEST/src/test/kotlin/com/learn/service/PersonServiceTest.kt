@@ -3,6 +3,7 @@ package com.learn.service
 import com.learn.model.Person
 import com.learn.repository.PersonRepository
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -54,6 +55,23 @@ class PersonServiceTest {
 
         val person = personService.get("Rizki")
         assertEquals("Rizki", person.id)
-        assertEquals("Rizki Anandita", person.name)
+        assertEquals("Anandita", person.name)
+    }
+
+    @Test
+    fun testRegisterPersonNameIsBlank() {
+        assertThrows<IllegalArgumentException> {
+            personService.register("    ")
+        }
+    }
+
+    @Test
+    fun testRegisterSuccess() {
+        val person = personService.register("Rizki")
+
+        assertEquals("Rizki", person.name)
+        assertNotNull(person.id)
+
+        Mockito.verify(personRepository, Mockito.times(1)).insert(Person(person.id, "Rizki"))
     }
 }
